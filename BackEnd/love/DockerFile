@@ -1,6 +1,6 @@
 FROM openjdk:11-jdk
 
-WORKDIR /var/jenkins_home/workspace/bmlove/backend
+WORKDIR /var/jenkins_home/workspace/bmlove/BackEnd
 
 ARG JAR_FILE_PATH=build/libs/love-0.0.1-SNAPSHOT.jar
 
