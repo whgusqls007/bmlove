@@ -1,14 +1,24 @@
 {
-    "configurations": [
-        {
-            "type": "java",
-            "name": "Spring Boot-LoveApplication<love>",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "mainClass": "com.minbin.love.LoveApplication",
-            "projectName": "love",
-            "args": "",
-            "envFile": "${workspaceFolder}/.env"
-        }
-    ]
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-LoveApplication<love>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.minbin.love.LoveApplication",
+      "projectName": "love",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-LoveApplication<love>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.bm.love.LoveApplication",
+      "projectName": "love",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
 }
