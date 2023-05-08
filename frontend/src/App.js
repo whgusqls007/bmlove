@@ -92,12 +92,11 @@ const App = () => {
                 업로드
             </button>
             {images.map((image) => (
-                <div>
+                <div key={image.id}>
                     <img
                         // src={`http://127.0.0.1:8081/image/get/${image.uri}`}
                         src={`http://18.191.103.58/images/image/get/${image.uri}`}
-                        alt={image.key}
-                        key={image.key}
+                        alt={image.id}
                         width={300}
                     />
                 </div>
