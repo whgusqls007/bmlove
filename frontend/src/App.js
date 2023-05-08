@@ -95,7 +95,7 @@ const App = () => {
                 <div>
                     <img
                         // src={`http://127.0.0.1:8081/image/get/${image.uri}`}
-                        src={`http://127.0.0.1/images/image/get/${image.uri}`}
+                        src={`http://18.224.45.108/images/image/get/${image.uri}`}
                         alt={image.key}
                         key={image.key}
                         width={300}
