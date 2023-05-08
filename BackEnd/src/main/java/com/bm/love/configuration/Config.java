@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class Config implements WebMvcConfigurer {
     @Value("${resources.location}")
     private String resourcesLocation;
-    @Value("${resources.uri_path:}")
+    @Value("${resources.uri_path}")
     private String resourcesUriPath;
 
     @Override

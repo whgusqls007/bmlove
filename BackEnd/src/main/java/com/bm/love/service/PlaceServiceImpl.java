@@ -36,7 +36,7 @@ public class PlaceServiceImpl implements PlaceService {
     private final PlaceRepository placeRepository;
     private final ImageRepository imageRepository;
 
-    @Value("${resources.uri_path:}")
+    @Value("${image.upload.path}")
     private String uploadPath;
 
     @Override
