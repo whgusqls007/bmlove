@@ -1,9 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { savePlaceAction, getPlacesAction } from "./placeAction";
+import {
+    savePlaceAction,
+    getPlacesAction,
+    savePlaceImageAction,
+    getPlaceImagesAction,
+} from "./placeAction";
 
 const initialState = {
     place: {},
     places: [],
+    image: {},
+    images: [],
 };
 
 const placeSlice = createSlice({
@@ -20,7 +27,6 @@ const placeSlice = createSlice({
         });
         builder.addCase(savePlaceAction.rejected, (state, { payload }) => {
             state.place = payload;
-            getPlacesAction();
         });
         builder.addCase(getPlacesAction.fulfilled, (state, { payload }) => {
             state.places = payload;
@@ -28,6 +34,19 @@ const placeSlice = createSlice({
         builder.addCase(getPlacesAction.rejected, (state, { payload }) => {
             state.places = payload;
         });
+        builder.addCase(
+            savePlaceImageAction.fulfilled,
+            (state, { payload }) => {
+                state.image = payload;
+            }
+        );
+        builder.addCase(
+            getPlaceImagesAction.fulfilled,
+            (state, { payload }) => {
+                state.images = payload;
+                console.log(payload);
+            }
+        );
     },
 });
 

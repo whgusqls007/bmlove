@@ -1,17 +1,33 @@
 import { useDispatch, useSelector } from "react-redux";
-import { savePlaceAction, getPlacesAction } from "./api/placeapi/placeAction";
+import {
+    savePlaceAction,
+    getPlacesAction,
+    savePlaceImageAction,
+    getPlaceImagesAction,
+} from "./api/placeapi/placeAction";
 import { useEffect, useState } from "react";
 
 const App = () => {
     const { title, content } = useSelector((state) => state.place.place);
-    const { places } = useSelector((state) => state.place);
+    const { uri } = useSelector((state) => state.place.image);
+    const { places, images } = useSelector((state) => state.place);
     const [inputTitle, setInputTitle] = useState("");
     const [inputContent, setInputContent] = useState("");
+    const [file, setFile] = useState(null);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getPlacesAction());
-    }, [dispatch, title]);
+        dispatch(getPlaceImagesAction());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(getPlacesAction());
+    }, [title]);
+
+    useEffect(() => {
+        dispatch(getPlaceImagesAction());
+    }, [uri]);
 
     return (
         <div style={{ marginLeft: "50px" }}>
@@ -52,7 +68,7 @@ const App = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {places.map((place, index) => (
+                        {places.map((place) => (
                             <tr key={place.id}>
                                 <td>{place.id}</td>
                                 <td>{place.title}</td>
@@ -62,6 +78,29 @@ const App = () => {
                     </tbody>
                 </table>
             </div>
+            <input
+                type="file"
+                onChange={(e) => setFile(e.target.files[0])}
+            ></input>
+            <button
+                onClick={() => {
+                    const data = new FormData();
+                    data.append("file", file);
+                    dispatch(savePlaceImageAction(data));
+                }}
+            >
+                업로드
+            </button>
+            {images.map((image) => (
+                <div>
+                    <img
+                        src={`http://127.0.0.1:8081/image/get/${image.uri}`}
+                        alt={image.key}
+                        key={image.key}
+                        width={300}
+                    />
+                </div>
+            ))}
         </div>
     );
 };
