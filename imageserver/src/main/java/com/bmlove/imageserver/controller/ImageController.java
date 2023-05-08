@@ -29,6 +29,7 @@ public class ImageController {
 
     @GetMapping("/get/{fileName}")
     public ResponseEntity<FileSystemResource> getImage(@PathVariable("fileName") String fileName) {
+        System.out.println("fileName: " + fileName);
         FileSystemResource resource = null;
         try {
             resource = imageService.getImages(fileName);
