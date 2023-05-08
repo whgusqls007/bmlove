@@ -1,9 +1,17 @@
-{
-    "properties": [
-        {
-            "name": "image.upload.path",
-            "type": "java.lang.String",
-            "description": "A description for 'image.upload.path'"
-        }
-    ]
-}
+{"properties": [
+  {
+    "name": "image.upload.path",
+    "type": "java.lang.String",
+    "description": "A description for 'image.upload.path'"
+  },
+  {
+    "name": "resources.location",
+    "type": "java.lang.String",
+    "description": "A description for 'resources.location'"
+  },
+  {
+    "name": "resources.uri_path",
+    "type": "java.lang.String",
+    "description": "A description for 'resources.uri_path'"
+  }
+]}
