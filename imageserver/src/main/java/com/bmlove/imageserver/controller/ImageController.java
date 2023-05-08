@@ -24,7 +24,6 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/image/")
 @RequiredArgsConstructor
-@CrossOrigin("*")
 public class ImageController {
 
     private final ImageService imageService;
