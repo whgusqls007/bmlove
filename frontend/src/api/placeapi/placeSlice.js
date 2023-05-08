@@ -44,7 +44,6 @@ const placeSlice = createSlice({
             getPlaceImagesAction.fulfilled,
             (state, { payload }) => {
                 state.images = payload;
-                console.log(payload);
             }
         );
     },

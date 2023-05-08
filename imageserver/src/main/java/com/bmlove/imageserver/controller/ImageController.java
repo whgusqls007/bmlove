@@ -27,13 +27,9 @@ public class ImageController {
 
     private final ImageService imageService;
 
-    @Value("${image.upload.path}")
-    private String path;
-
     @GetMapping("/get/{fileName}")
     public ResponseEntity<FileSystemResource> getImage(@PathVariable("fileName") String fileName) {
         FileSystemResource resource = null;
-
         try {
             resource = imageService.getImages(fileName);
         } catch (FileNotFoundException e) {

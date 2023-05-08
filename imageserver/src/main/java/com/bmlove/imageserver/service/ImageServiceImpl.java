@@ -1,6 +1,7 @@
 package com.bmlove.imageserver.service;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
@@ -15,6 +16,7 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public FileSystemResource getImages(String fileName) throws FileNotFoundException {
         FileSystemResource resource = new FileSystemResource(uploadPath + fileName);
+
         if (!resource.exists()) {
             throw new FileNotFoundException();
         }
