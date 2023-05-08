@@ -17,10 +17,11 @@ public class Config implements WebMvcConfigurer {
         registry.addMapping("/**").allowedOrigins("*");
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/images/**")
-                .addResourceLocations("file://" + "/var/jenkins_home/workspace/bmlove/imageserver/");
+    // @Override
+    // public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    // registry.addResourceHandler("/images/**")
+    // .addResourceLocations("file://" +
+    // "/var/jenkins_home/workspace/bmlove/imageserver/");
 
-    }
+    // }
 }
