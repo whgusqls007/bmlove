@@ -12,6 +12,11 @@ import com.bm.love.dto.PlaceCreateDto;
 import com.bm.love.dto.PlaceResponseDto;
 
 public interface PlaceService {
+
+    List<PlaceResponseDto> getPlaceBySearchText(String searchText);
+
+    PlaceResponseDto getPlaceById(Integer id);
+
     List<PlaceResponseDto> getPlaces(Pageable pageable);
 
     PlaceResponseDto sevePlace(PlaceCreateDto placeCreateDto);

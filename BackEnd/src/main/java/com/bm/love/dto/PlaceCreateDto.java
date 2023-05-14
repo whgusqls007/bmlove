@@ -24,4 +24,5 @@ public class PlaceCreateDto {
         this.title = title;
         this.content = content;
     }
+
 }

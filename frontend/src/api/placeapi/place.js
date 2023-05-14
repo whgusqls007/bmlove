@@ -5,8 +5,13 @@ export const savePlaceAxios = async (params) => {
     return response;
 };
 
+export const getPlaceAxios = async (params) => {
+    const response = client.get(`/places/place`, params);
+    return response;
+};
+
 export const getPlacesAxios = async (params) => {
-    const response = client.get("/places/place", params);
+    const response = client.get(`/places/places`, params);
     return response;
 };
 

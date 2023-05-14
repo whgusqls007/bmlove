@@ -1,7 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
     savePlaceAxios,
+    getPlaceAxios,
     getPlacesAxios,
+    // searchPlaceAxios,
     savePlaceImageAxios,
     getPlaceImagesAxios,
 } from "./place";
@@ -18,6 +20,21 @@ export const savePlaceAction = createAsyncThunk(
             } else {
                 return rejectWithValue(error.message);
             }
+        }
+    }
+);
+
+export const getPlaceAction = createAsyncThunk(
+    "places/place/get",
+    async (params, { rejectWithValue }) => {
+        try {
+            const { data } = await getPlaceAxios({ params });
+            return { data, type: params.type };
+        } catch (error) {
+            return rejectWithValue({
+                message: error.message,
+                statusCode: error.response.status,
+            });
         }
     }
 );
@@ -43,6 +60,21 @@ export const getPlacesAction = createAsyncThunk(
         }
     }
 );
+
+// export const searchPlaceAction = createAsyncThunk(
+//     "places/place/search",
+//     async (params, { rejectWithValue }) => {
+//         try {
+//             const { data } = await searchPlaceAxios(params);
+//             return data;
+//         } catch (error) {
+//             return rejectWithValue({
+//                 message: error.message,
+//                 statusCode: error.response.status,
+//             });
+//         }
+//     }
+// );
 
 export const savePlaceImageAction = createAsyncThunk(
     "places/place/image/post",

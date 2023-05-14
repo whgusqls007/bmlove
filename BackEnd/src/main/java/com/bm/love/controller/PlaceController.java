@@ -1,8 +1,10 @@
 package com.bm.love.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 
 import org.springframework.data.domain.Pageable;
@@ -19,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.bm.love.dto.ImageResponseDto;
 import com.bm.love.dto.PlaceCreateDto;
 import com.bm.love.dto.PlaceResponseDto;
+import com.bm.love.dto.PlaceSearchDto;
 import com.bm.love.service.PlaceService;
 
 import lombok.RequiredArgsConstructor;
@@ -31,6 +34,31 @@ public class PlaceController {
     private final PlaceService placeService;
 
     @GetMapping("/place")
+    public ResponseEntity<List<PlaceResponseDto>> getPlace(PlaceSearchDto placeSearchDto) {
+        List<PlaceResponseDto> list = null;
+
+        if (placeSearchDto.getType()) {
+            PlaceResponseDto placeResponseDto = null;
+            list = new ArrayList<>();
+            try {
+                placeResponseDto = placeService.getPlaceById(placeSearchDto.getId());
+                list.add(placeResponseDto);
+            } catch (EntityNotFoundException e) {
+                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            }
+
+        } else {
+            try {
+                list = placeService.getPlaceBySearchText(placeSearchDto.getSearchText());
+            } catch (EntityNotFoundException e) {
+                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            }
+        }
+
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    @GetMapping("/places")
     public ResponseEntity<List<PlaceResponseDto>> getPlaces(Pageable pageable) {
         List<PlaceResponseDto> list = null;
         try {

@@ -10,6 +10,9 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+
+import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -38,6 +41,29 @@ public class PlaceServiceImpl implements PlaceService {
 
     @Value("${image.upload.path}")
     private String uploadPath;
+
+    @Override
+    public List<PlaceResponseDto> getPlaceBySearchText(String searchText) {
+        List<PlaceResponseDto> list = new ArrayList<>();
+        placeRepository.findAllByTitleContainsOrContentContains(searchText, searchText).forEach((e) -> {
+            list.add(e.toResponseDto());
+        });
+        if (list.size() == 0) {
+            throw new EntityNotFoundException();
+        }
+        return list;
+    }
+
+    @Override
+    public PlaceResponseDto getPlaceById(Integer id) {
+        Optional<PlaceEntity> placeEntity = placeRepository.findById(id);
+        if (placeEntity.isPresent()) {
+            PlaceResponseDto placeResponseDto = placeEntity.get().toResponseDto();
+            System.out.println(placeResponseDto);
+            return placeResponseDto;
+        }
+        throw new EntityNotFoundException();
+    }
 
     @Override
     public List<PlaceResponseDto> getPlaces(Pageable pageable) {

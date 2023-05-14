@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
     savePlaceAction,
+    getPlaceAction,
     getPlacesAction,
     savePlaceImageAction,
     getPlaceImagesAction,
@@ -14,6 +15,7 @@ const App = () => {
     const [inputTitle, setInputTitle] = useState("");
     const [inputContent, setInputContent] = useState("");
     const [file, setFile] = useState(null);
+    const [searchText, setSearchText] = useState("");
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -59,6 +61,22 @@ const App = () => {
             <div>내용: {content}</div>
 
             <div style={{ marginTop: "50px" }}>
+                <input
+                    type="text"
+                    onChange={(e) => setSearchText(e.target.value)}
+                />
+                <button
+                    onClick={() =>
+                        dispatch(
+                            getPlaceAction({
+                                searchText: searchText,
+                                type: false,
+                            })
+                        )
+                    }
+                >
+                    검색
+                </button>
                 <table>
                     <thead>
                         <tr>
@@ -69,7 +87,18 @@ const App = () => {
                     </thead>
                     <tbody>
                         {places.map((place) => (
-                            <tr key={place.id}>
+                            <tr
+                                key={place.id}
+                                onClick={() =>
+                                    dispatch(
+                                        getPlaceAction({
+                                            id: place.id,
+                                            type: true,
+                                        })
+                                    )
+                                }
+                                style={{ cursor: "pointer" }}
+                            >
                                 <td>{place.id}</td>
                                 <td>{place.title}</td>
                                 <td>{place.content}</td>
