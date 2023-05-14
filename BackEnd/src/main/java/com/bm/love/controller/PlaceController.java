@@ -24,6 +24,8 @@ import com.bm.love.dto.PlaceResponseDto;
 import com.bm.love.dto.PlaceSearchDto;
 import com.bm.love.service.PlaceService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -33,6 +35,10 @@ public class PlaceController {
 
     private final PlaceService placeService;
 
+    @Operation(description = "Get place or places depends on request type")
+    @ApiResponse(responseCode = "200", description = "OK")
+    @ApiResponse(responseCode = "404", description = "NOT FOUND")
+    @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
     @GetMapping("/place")
     public ResponseEntity<List<PlaceResponseDto>> getPlace(PlaceSearchDto placeSearchDto) {
         List<PlaceResponseDto> list = null;
