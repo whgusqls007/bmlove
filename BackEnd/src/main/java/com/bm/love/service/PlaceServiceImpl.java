@@ -12,9 +12,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.EntityNotFoundException;
-
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -26,6 +25,7 @@ import com.bm.love.dto.PlaceCreateDto;
 import com.bm.love.dto.PlaceResponseDto;
 import com.bm.love.entity.ImageEntity;
 import com.bm.love.entity.PlaceEntity;
+import com.bm.love.exception.CustomNotFoundException;
 import com.bm.love.repository.ImageRepository;
 import com.bm.love.repository.PlaceRepository;
 import com.bm.love.util.Utils;
@@ -43,33 +43,42 @@ public class PlaceServiceImpl implements PlaceService {
     private String uploadPath;
 
     @Override
-    public List<PlaceResponseDto> getPlaceBySearchText(String searchText) {
+    public List<PlaceResponseDto> getPlaceBySearchText(String searchText) throws CustomNotFoundException {
         List<PlaceResponseDto> list = new ArrayList<>();
         placeRepository.findAllByTitleContainsOrContentContains(searchText, searchText).forEach((e) -> {
             list.add(e.toResponseDto());
         });
+
         if (list.size() == 0) {
-            throw new EntityNotFoundException();
+            throw CustomNotFoundException.builder().message("No content found by searchText").build();
         }
+
         return list;
     }
 
     @Override
-    public PlaceResponseDto getPlaceById(Integer id) {
+    public PlaceResponseDto getPlaceById(Integer id) throws CustomNotFoundException {
         Optional<PlaceEntity> placeEntity = placeRepository.findById(id);
-        if (placeEntity.isPresent()) {
-            PlaceResponseDto placeResponseDto = placeEntity.get().toResponseDto();
-            System.out.println(placeResponseDto);
-            return placeResponseDto;
+
+        if (!placeEntity.isPresent()) {
+            throw CustomNotFoundException.builder().message("No content found by id").build();
         }
-        throw new EntityNotFoundException();
+
+        PlaceResponseDto placeResponseDto = placeEntity.get().toResponseDto();
+        System.out.println(placeResponseDto);
+        return placeResponseDto;
     }
 
     @Override
-    public List<PlaceResponseDto> getPlaces(Pageable pageable) {
+    public List<PlaceResponseDto> getPlaces(Pageable pageable) throws CustomNotFoundException {
         Page<PlaceEntity> page = placeRepository.findAll(pageable);
         List<PlaceResponseDto> list = new ArrayList<>();
         page.get().forEach((e) -> list.add(e.toResponseDto()));
+
+        if (list.size() == 0) {
+            throw CustomNotFoundException.builder().message("No content found").build();
+        }
+
         return list;
     }
 
@@ -97,7 +106,7 @@ public class PlaceServiceImpl implements PlaceService {
 
             return imageResponseDto;
         } catch (MalformedURLException e) {
-            throw new MalformedURLException();
+            throw new MalformedURLException("No Valid Protocol");
         }
     }
 

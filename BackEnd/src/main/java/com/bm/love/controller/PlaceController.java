@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 
 import org.springframework.data.domain.Pageable;
@@ -22,6 +21,7 @@ import com.bm.love.dto.ImageResponseDto;
 import com.bm.love.dto.PlaceCreateDto;
 import com.bm.love.dto.PlaceResponseDto;
 import com.bm.love.dto.PlaceSearchDto;
+import com.bm.love.exception.CustomNotFoundException;
 import com.bm.love.service.PlaceService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -35,43 +35,33 @@ public class PlaceController {
 
     private final PlaceService placeService;
 
-    @Operation(description = "Get place or places depends on request type")
+    @Operation(description = "Get place or places depends on request type.\n" +
+            "\n If request type == true ? get place\n" +
+            "\n If request type == false ? get places")
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "404", description = "NOT FOUND")
     @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
     @GetMapping("/place")
-    public ResponseEntity<List<PlaceResponseDto>> getPlace(PlaceSearchDto placeSearchDto) {
+    public ResponseEntity<List<PlaceResponseDto>> getPlace(PlaceSearchDto placeSearchDto)
+            throws CustomNotFoundException {
         List<PlaceResponseDto> list = null;
 
         if (placeSearchDto.getType()) {
             PlaceResponseDto placeResponseDto = null;
             list = new ArrayList<>();
-            try {
-                placeResponseDto = placeService.getPlaceById(placeSearchDto.getId());
-                list.add(placeResponseDto);
-            } catch (EntityNotFoundException e) {
-                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-            }
-
+            placeResponseDto = placeService.getPlaceById(placeSearchDto.getId());
+            list.add(placeResponseDto);
         } else {
-            try {
-                list = placeService.getPlaceBySearchText(placeSearchDto.getSearchText());
-            } catch (EntityNotFoundException e) {
-                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-            }
+            list = placeService.getPlaceBySearchText(placeSearchDto.getSearchText());
         }
 
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
     @GetMapping("/places")
-    public ResponseEntity<List<PlaceResponseDto>> getPlaces(Pageable pageable) {
+    public ResponseEntity<List<PlaceResponseDto>> getPlaces(Pageable pageable) throws CustomNotFoundException {
         List<PlaceResponseDto> list = null;
-        try {
-            list = placeService.getPlaces(pageable);
-        } catch (Exception e) {
-            return null;
-        }
+        list = placeService.getPlaces(pageable);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
