@@ -19,4 +19,5 @@ public class PlaceResponseDto {
         this.title = title;
         this.content = content;
     }
+
 }

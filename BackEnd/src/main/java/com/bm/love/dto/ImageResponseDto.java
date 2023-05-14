@@ -17,4 +17,5 @@ public class ImageResponseDto {
         this.id = id;
         this.uri = uri;
     }
+
 }

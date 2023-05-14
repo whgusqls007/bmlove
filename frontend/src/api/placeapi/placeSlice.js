@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
     savePlaceAction,
+    getPlaceAction,
     getPlacesAction,
+    // searchPlaceAction,
     savePlaceImageAction,
     getPlaceImagesAction,
 } from "./placeAction";
@@ -27,6 +29,20 @@ const placeSlice = createSlice({
         });
         builder.addCase(savePlaceAction.rejected, (state, { payload }) => {
             state.place = payload;
+        });
+        builder.addCase(getPlaceAction.fulfilled, (state, { payload }) => {
+            if (payload.type == true) {
+                state.place = payload.data[0];
+            } else {
+                state.places = payload.data;
+            }
+        });
+        builder.addCase(getPlaceAction.rejected, (state, { payload }) => {
+            if (payload.type == true) {
+                state.place = {};
+            } else {
+                state.places = [];
+            }
         });
         builder.addCase(getPlacesAction.fulfilled, (state, { payload }) => {
             state.places = payload;
