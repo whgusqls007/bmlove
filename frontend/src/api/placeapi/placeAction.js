@@ -97,10 +97,15 @@ export const getPlaceImagesAction = createAsyncThunk(
     "places/place/images/get",
     async (params, { rejectWithValue }) => {
         try {
+            // {
+            //     params: {
+            //         page: "0",
+            //         size: "4",
+            //         sort: "id,DESC",
+            //     },
+            // }
             const { data } = await getPlaceImagesAxios({
                 params: {
-                    page: "0",
-                    size: "4",
                     sort: "id,DESC",
                 },
             });
