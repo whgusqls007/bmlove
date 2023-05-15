@@ -3,7 +3,6 @@ import {
     savePlaceAction,
     getPlaceAction,
     getPlacesAction,
-    // searchPlaceAction,
     savePlaceImageAction,
     getPlaceImagesAction,
 } from "./placeAction";
@@ -31,14 +30,14 @@ const placeSlice = createSlice({
             state.place = payload;
         });
         builder.addCase(getPlaceAction.fulfilled, (state, { payload }) => {
-            if (payload.type == true) {
+            if (payload.type === true) {
                 state.place = payload.data[0];
             } else {
                 state.places = payload.data;
             }
         });
         builder.addCase(getPlaceAction.rejected, (state, { payload }) => {
-            if (payload.type == true) {
+            if (payload.type === true) {
                 state.place = {};
             } else {
                 state.places = [];

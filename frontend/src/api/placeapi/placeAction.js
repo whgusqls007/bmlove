@@ -43,13 +43,14 @@ export const getPlacesAction = createAsyncThunk(
     "places/places/get",
     async (params, { rejectWithValue }) => {
         try {
-            const { data } = await getPlacesAxios({
-                params: {
-                    page: "0",
-                    size: "4",
-                    sort: "id,DESC",
-                },
-            });
+            // {
+            //     params: {
+            //         page: "0",
+            //         size: "4",
+            //         sort: "id,DESC",
+            //     },
+            // }
+            const { data } = await getPlacesAxios();
             return data;
         } catch (error) {
             if (error.response && error.response.data.message) {
