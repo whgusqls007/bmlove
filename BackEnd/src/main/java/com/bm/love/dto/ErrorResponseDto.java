@@ -11,8 +11,6 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-@Builder
-@NoArgsConstructor
 public class ErrorResponseDto {
     private int code;
     private HttpStatus httpStatus;
