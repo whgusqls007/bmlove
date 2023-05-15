@@ -1,6 +1,6 @@
 FROM node:18.16.0 as build-stage
 
-WORKDIR /var/jenkins_home/workspace/bmlove/frontend
+WORKDIR /var/jenkins_home/workspace/BMLOVE/frontend
 
 COPY package*.json ./
 RUN npm install
