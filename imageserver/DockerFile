@@ -1,6 +1,6 @@
 FROM openjdk:11-jdk
 
-WORKDIR /var/jenkins_home/workspace/bmlove/imageserver
+WORKDIR /var/jenkins_home/workspace/BMLOVE/imageserver
 
 RUN mkdir images
 
