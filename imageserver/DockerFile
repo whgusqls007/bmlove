@@ -6,8 +6,8 @@ RUN mkdir images
 
 ARG JAR_FILE_PATH=build/libs/imageserver-0.0.1-SNAPSHOT.jar
 
-COPY $JAR_FILE_PATH app.jar
+COPY $JAR_FILE_PATH imageserver.jar
 
 EXPOSE 8081
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "imageserver.jar"]
