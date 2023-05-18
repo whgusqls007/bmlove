@@ -2,15 +2,15 @@ import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
-import Sidebar from "./components/SideBar Section/Sidebar";
-import Body from "./components/Body Section/Body";
+import Nav from "./components/Nav Section/Nav";
+import Body from "./pages/body/Body";
 import Board from "./components/Board Section/Board";
 import Picture from "./components/Picture Section/Picture";
 
 const App = () => {
   return (
     <div className="container">
-      <Sidebar />
+      <Nav />
       <Routes>
         <Route path="" element={<Body />} />
         <Route path="/board" element={<Board />} />
