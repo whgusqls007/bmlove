@@ -144,4 +144,57 @@
   bottom: -80px;
   right: -90px;
   z-index: 1;
+}
+
+@media screen and (max-width: 820px) {
+  .sideBar {
+    padding-bottom: 2rem;
+  }
+  .sideBar .sideBarCard {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 745px) {
+  .sideBar .logoDiv {
+    text-align: center;
+    margin: auto;
+    padding: 1.5rem 0rem;
+  }
+  .sideBar .logoDiv img {
+    max-width: 50px;
+    margin: 0;
+    border-radius: 10px;
+    padding: 0.5rem;
+  }
+  .sideBar .logoDiv h2 {
+    display: none !important;
+  }
+  .sideBar .menuDiv .divTitle,
+  .sideBar .menuDiv .smallText,
+  .sideBar .settingDiv .divTitle,
+  .sideBar .settingDiv .smallText {
+    display: none !important;
+  }
+  .sideBar .menuDiv .menuLists .listItem .menuLink,
+  .sideBar .settingDiv .menuLists .listItem .menuLink {
+    justify-content: center;
+  }
+  .sideBar .menuDiv .menuLists .listItem .menuLink .icon,
+  .sideBar .settingDiv .menuLists .listItem .menuLink .icon {
+    font-size: var(--h1FontSize);
+  }
+}
+@media screen and (max-width: 390px) {
+  .sideBar .menuDiv .menuLists .listItem,
+  .sideBar .settingDiv .menuLists .listItem {
+    padding: 0.2rem 0.5rem;
+  }
+  .sideBar .menuDiv .menuLists .listItem .menuLink,
+  .sideBar .settingDiv .menuLists .listItem .menuLink {
+    justify-content: center;
+  }
+  .sideBar .menuDiv .menuLists .listItem .menuLink .icon,
+  .sideBar .settingDiv .menuLists .listItem .menuLink .icon {
+    font-size: var(--h2FontSize);
+  }
 }/*# sourceMappingURL=sidebar.css.map */
