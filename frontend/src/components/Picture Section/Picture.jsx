@@ -27,13 +27,11 @@ const Picture = () => {
         // accept="image/*"
         onChange={(e) => {
           setFile(e.target.files[0]);
-          alert(e.target.files[0]);
         }}
       />
       <button
         onClick={() => {
           onClickHandler();
-          alert(file);
         }}
       >
         업로드

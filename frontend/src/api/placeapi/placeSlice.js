@@ -53,7 +53,6 @@ const placeSlice = createSlice({
       state.image = payload;
     });
     builder.addCase(getPlaceImagesAction.fulfilled, (state, { payload }) => {
-      console.log(payload);
       state.images = payload;
     });
   },
