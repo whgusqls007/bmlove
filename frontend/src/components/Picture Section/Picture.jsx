@@ -23,7 +23,11 @@ const Picture = () => {
 
   return (
     <div className="mainContent">
-      <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+      <input
+        type="file"
+        accept="image/*"
+        onChange={(e) => setFile(e.target.files[0])}
+      />
       <button onClick={onClickHandler}>업로드</button>
       {images
         ? images.map((e) => (
