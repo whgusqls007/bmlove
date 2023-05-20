@@ -34,8 +34,6 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/places")
 @RequiredArgsConstructor
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 1, maxFileSize = 1024 * 1024 * 256, maxRequestSize = 1024 * 1024
-        * 300, location = "D:/images")
 public class PlaceController {
 
     private final PlaceService placeService;
