@@ -17,7 +17,6 @@ const Picture = () => {
   const onClickHandler = () => {
     const formData = new FormData();
     formData.append("file", file);
-    console.log(formData);
     dispatch(savePlaceImageAction(formData));
   };
 
@@ -25,10 +24,20 @@ const Picture = () => {
     <div className="mainContent">
       <input
         type="file"
-        accept="image/*"
-        onChange={(e) => setFile(e.target.files[0])}
+        // accept="image/*"
+        onChange={(e) => {
+          setFile(e.target.files[0]);
+          alert(e.target.files[0]);
+        }}
       />
-      <button onClick={onClickHandler}>업로드</button>
+      <button
+        onClick={() => {
+          onClickHandler();
+          alert(file);
+        }}
+      >
+        업로드
+      </button>
       {images
         ? images.map((e) => (
             <img
