@@ -18,6 +18,7 @@ public class ImageServiceImpl implements ImageService {
         if (!resource.exists()) {
             throw new FileNotFoundException();
         }
+        System.out.println(resource);
         return resource;
     }
 }
