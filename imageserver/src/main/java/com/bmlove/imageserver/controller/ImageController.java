@@ -27,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 public class ImageController {
 
     private final ImageService imageService;
-    private static Logger logger = LoggerFactory.getLogger(TestController.class);
+    private static Logger logger = LoggerFactory.getLogger(ImageController.class);
 
     @GetMapping("/get/{fileName}")
     public ResponseEntity<FileSystemResource> getImage(@PathVariable("fileName") String fileName) {
