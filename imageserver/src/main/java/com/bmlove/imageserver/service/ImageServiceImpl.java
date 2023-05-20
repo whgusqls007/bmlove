@@ -15,9 +15,6 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public FileSystemResource getImages(String fileName) throws FileNotFoundException {
         FileSystemResource resource = new FileSystemResource(uploadPath + fileName);
-        System.out.println("uploadPath: " + uploadPath);
-        System.out.println("fileName: " + fileName);
-        System.out.println("resource: " + resource);
         if (!resource.exists()) {
             throw new FileNotFoundException();
         }

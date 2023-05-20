@@ -45,7 +45,6 @@ public class PlaceController {
     public ResponseEntity<List<PlaceResponseDto>> getPlace(PlaceSearchDto placeSearchDto)
             throws CustomNotFoundException {
         List<PlaceResponseDto> list = null;
-
         if (placeSearchDto.getType()) {
             PlaceResponseDto placeResponseDto = null;
             list = new ArrayList<>();
