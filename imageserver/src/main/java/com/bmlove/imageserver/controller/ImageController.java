@@ -38,8 +38,10 @@ public class ImageController {
 
         HttpHeaders httpHeaders = new HttpHeaders();
         Path filepath = Paths.get(resource != null ? resource.getPath() : "");
+
         try {
-            httpHeaders.add("Content-type", Files.probeContentType(filepath));
+            System.out.println(Files.probeContentType(filepath));
+            httpHeaders.add("Content-type", "text/plain");
         } catch (IOException e) {
             e.printStackTrace();
         }
