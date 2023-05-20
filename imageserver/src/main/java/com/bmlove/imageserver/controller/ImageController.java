@@ -28,7 +28,6 @@ public class ImageController {
 
     @GetMapping("/get/{fileName}")
     public ResponseEntity<FileSystemResource> getImage(@PathVariable("fileName") String fileName) {
-        System.out.println("fileName: " + fileName);
         FileSystemResource resource = null;
         try {
             resource = imageService.getImages(fileName);
@@ -40,7 +39,6 @@ public class ImageController {
         Path filepath = Paths.get(resource != null ? resource.getPath() : "");
 
         try {
-            System.out.println(Files.probeContentType(filepath));
             httpHeaders.add("Content-type", Files.probeContentType(filepath));
         } catch (IOException e) {
             e.printStackTrace();
