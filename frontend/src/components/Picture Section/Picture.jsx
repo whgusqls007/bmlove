@@ -19,7 +19,7 @@ const Picture = () => {
       <input type="file" onChange={(e) => setFile(e.target.files[0])} />
       <button
         onClick={() => {
-          dispatch(savePlaceImageAction(file));
+          dispatch(savePlaceImageAction(new FormData().append("file", file)));
         }}
       >
         업로드
