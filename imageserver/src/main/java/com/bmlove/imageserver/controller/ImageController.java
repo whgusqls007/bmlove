@@ -41,7 +41,7 @@ public class ImageController {
 
         try {
             System.out.println(Files.probeContentType(filepath));
-            httpHeaders.add("Content-type", "text/plain");
+            httpHeaders.add("Content-type", Files.probeContentType(filepath));
         } catch (IOException e) {
             e.printStackTrace();
         }
