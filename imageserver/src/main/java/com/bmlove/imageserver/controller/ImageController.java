@@ -29,6 +29,11 @@ public class ImageController {
     private final ImageService imageService;
     private static Logger logger = LoggerFactory.getLogger(ImageController.class);
 
+    @GetMapping("/get1/{string}")
+    public String getString(@PathVariable("string") String str) {
+        return str;
+    }
+
     @GetMapping("/get/{fileName}")
     public ResponseEntity<FileSystemResource> getImage(@PathVariable("fileName") String fileName) {
         logger.info("fileName: " + fileName);
