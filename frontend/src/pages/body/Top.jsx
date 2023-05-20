@@ -23,8 +23,9 @@ import {
   Text,
   ImageBox,
 } from "../../style/body/TopStyle";
+import Dropdown from "../../components/Nav Section/TopBar";
 
-const Top = () => {
+const Top = ({ view, setView, windowSize }) => {
   return (
     <Container>
       <Header>
@@ -32,7 +33,6 @@ const Top = () => {
           <h1>Welcome to BMLOVE</h1>
           <p>안녕 수민아 ㅎㅎ</p>
         </Title>
-
         <SearchBar>
           <input
             type="text"
@@ -50,7 +50,6 @@ const Top = () => {
           </div>
         </User>
       </Header>
-
       <Main>
         <RightCard>
           <h1>게시판 최근 게시물 올리면 될듯</h1>

@@ -1,44 +1,26 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  display: flex;
-  position: absolute;
-  height: 100%;
-  top: 35px;
-  left: 30px;
   z-index: 1000;
-  background: transparent;
   color: ${({ theme }) => theme.color.textColor};
-  width: 82%;
-
-  .icon {
-    font-size: 40px;
-  }
+  background: ${({ theme }) => theme.color.whiteColor};
+  width: 100%;
+  justify-content: end;
+  max-height: 300px;
+  overflow: scroll;
 `;
 
-export const DropdownWrapper = styled.div`
-  display: grid;
-  border-radius: 10px;
-  background: ${({ theme }) => theme.color.whiteColor};
-  box-shadow: 1px 0px 4px ${({ theme }) => theme.color.greyText};
-  width: 100%;
-  height: 47%;
-  align-items: normal;
-  padding: 1rem 0 1.5rem 1rem;
-  transition: 0.3s ease;
-  overflow: auto;
+export const MenuTitle = styled.div`
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  @keyframes dropdown {
-    0% {
-      opacity: 0;
-      transform: translateY(-100%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .icon {
+    margin-right: 2rem;
+    font-size: 30px;
+    min-width: 30px;
   }
-  animation: dropdown 0.4s ease;
 `;
 
 export const Menu = styled.div`
@@ -49,24 +31,31 @@ export const Menu = styled.div`
   }
 
   ul {
-    display: grid;
+    display: flex;
     align-items: center;
     gap: 1.5rem;
+    flex-direction: column;
+
+    &:last-child {
+      padding-bottom: 1.5rem;
+    }
 
     li {
-      padding: 0.2rem 1.5rem 0rem;
+      padding: 0rem 1.5rem 0rem;
       width: 100%;
       position: relative;
+      cursor: pointer;
 
       &::before {
         position: absolute;
         content: "";
-        height: 0%;
+        height: 0;
         left: 0;
-        width: 5px;
-        border-top-right-radius: 10px;
+        width: 0;
+        top: 100%;
+        border-top-left-radius: 10px;
         border-bottom-right-radius: 5px;
-        background-color: ${({ theme }) => theme.color.primaryColor};
+        background-color: ${({ theme }) => theme.color.whiteColor};
       }
 
       a {
@@ -90,9 +79,25 @@ export const Menu = styled.div`
       }
 
       &:hover::before {
-        height: 100%;
+        height: 2%;
+        width: 100%;
         transition: 0.3s ease;
+        background-color: ${({ theme }) => theme.color.primaryColor};
       }
     }
+    @keyframes dropdown {
+      0% {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+      80% {
+        opacity: 0.3;
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    animation: dropdown 0.4s ease;
   }
 `;

@@ -4,10 +4,10 @@ import Activity from "../../components/Body Section/Activity Section/Activity";
 import { Wrapper, Contents } from "../../style/body/BodyStyle";
 import Top from "./Top";
 
-const Body = () => {
+const Body = ({ view, setView, windowSize }) => {
   return (
     <Wrapper>
-      <Top />
+      <Top view={view} setView={setView} windowSize={windowSize} />
       <Contents>
         <Listing />
         <Activity />
