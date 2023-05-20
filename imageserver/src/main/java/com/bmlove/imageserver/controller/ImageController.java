@@ -6,6 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,14 +22,16 @@ import com.bmlove.imageserver.service.ImageService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/image/")
+@RequestMapping("/image")
 @RequiredArgsConstructor
 public class ImageController {
 
     private final ImageService imageService;
+    private static Logger logger = LoggerFactory.getLogger(TestController.class);
 
     @GetMapping("/get/{fileName}")
     public ResponseEntity<FileSystemResource> getImage(@PathVariable("fileName") String fileName) {
+        logger.info("fileName: " + fileName);
         FileSystemResource resource = null;
 
         try {
