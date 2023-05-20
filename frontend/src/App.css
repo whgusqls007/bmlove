@@ -51,6 +51,8 @@ img {
 }
 
 .flex {
+  display: flex;
+  align-items: center;
 }
 
 .grid {

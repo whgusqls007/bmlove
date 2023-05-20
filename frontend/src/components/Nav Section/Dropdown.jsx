@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-import { Wrapper, DropdownWrapper, Menu } from "../../style/nav/dropdown";
+import { Wrapper, DropdownWrapper, Menu } from "../../style/nav/DropDownStyle";
 
 import { IoMdSpeedometer } from "react-icons/io";
 import { MdDeliveryDining, MdOutlineExplore } from "react-icons/md";
 import { BsTrophy } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
-const Dropdown = () => {
-  const [view, setView] = useState(false);
-
+const Dropdown = ({ view, setView }) => {
   return (
     <Wrapper>
       <GiHamburgerMenu className="icon" onClick={() => setView(!view)} />

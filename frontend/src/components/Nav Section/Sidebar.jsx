@@ -8,7 +8,7 @@ import { IoMdSpeedometer } from "react-icons/io";
 import { MdDeliveryDining, MdOutlineExplore } from "react-icons/md";
 import { BsTrophy } from "react-icons/bs";
 
-import { Wrapper, Menu } from "../../style/nav/sidebar";
+import { Wrapper, Menu } from "../../style/nav/SideBarStyle";
 
 const Sidebar = () => {
   return (

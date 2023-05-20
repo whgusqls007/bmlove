@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import Dropdown from "./Dropdown";
 
-const Nav = () => {
+const Nav = ({ view, setView }) => {
   const [windowSize, setWindowSize] = useState({
     width: undefined,
     height: undefined,
@@ -19,7 +19,15 @@ const Nav = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return <>{windowSize.width > 576 ? <Sidebar /> : <Dropdown />}</>;
+  return (
+    <>
+      {windowSize.width > 576 ? (
+        <Sidebar />
+      ) : (
+        <Dropdown view={view} setView={setView} />
+      )}
+    </>
+  );
 };
 
 export default Nav;

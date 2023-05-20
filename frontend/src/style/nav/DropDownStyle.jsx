@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
-  position: fixed;
+  position: absolute;
   height: 100%;
   top: 35px;
   left: 30px;
   z-index: 1000;
   background: transparent;
   color: ${({ theme }) => theme.color.textColor};
+  width: 82%;
 
   .icon {
     font-size: 40px;
@@ -22,9 +23,8 @@ export const DropdownWrapper = styled.div`
   box-shadow: 1px 0px 4px ${({ theme }) => theme.color.greyText};
   width: 100%;
   height: 47%;
-  gap: 3rem;
   align-items: normal;
-  padding: 1.5rem;
+  padding: 1rem 0 1.5rem 1rem;
   transition: 0.3s ease;
   overflow: auto;
 
