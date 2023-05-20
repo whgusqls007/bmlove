@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +36,7 @@ import lombok.RequiredArgsConstructor;
 public class PlaceController {
 
     private final PlaceService placeService;
+    private final Logger logger = LoggerFactory.getLogger(PlaceController.class);
 
     @Operation(description = "Get place or places depends on request type.\n" +
             "\n If request type == true ? get place\n" +
@@ -59,6 +62,7 @@ public class PlaceController {
 
     @GetMapping("/places")
     public ResponseEntity<List<PlaceResponseDto>> getPlaces(Pageable pageable) throws CustomNotFoundException {
+
         List<PlaceResponseDto> list = null;
         list = placeService.getPlaces(pageable);
         return new ResponseEntity<>(list, HttpStatus.OK);
@@ -77,6 +81,8 @@ public class PlaceController {
 
     @PostMapping("/place/image")
     public ResponseEntity<ImageResponseDto> postPlaceImage(@RequestParam MultipartFile file) {
+        logger.info("file: " + file);
+        logger.info("fileName: " + file.getOriginalFilename());
         ImageResponseDto imageResponseDto = null;
         try {
             imageResponseDto = placeService.savePlaceImage(file);
