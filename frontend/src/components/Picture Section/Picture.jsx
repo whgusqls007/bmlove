@@ -8,18 +8,20 @@ import {
 const Picture = () => {
   const dispatch = useDispatch();
   const [file, setFile] = useState();
-  const { images } = useSelector((state) => state.place.images);
+  const { images } = useSelector((state) => state.place);
 
   useEffect(() => {
     dispatch(getPlaceImagesAction());
-  }, [dispatch, images]);
+  }, [dispatch]);
 
   return (
     <div className="mainContent">
       <input type="file" onChange={(e) => setFile(e.target.files[0])} />
       <button
         onClick={() => {
-          dispatch(savePlaceImageAction(new FormData().append("file", file)));
+          const formData = new FormData();
+          formData.append("file", file);
+          dispatch(savePlaceImageAction(formData));
         }}
       >
         업로드
@@ -27,7 +29,8 @@ const Picture = () => {
       {images
         ? images.map((e) => (
             <img
-              src={`http://jhb.gonetis.com/images/image/get/${e.url}`}
+              // src={`http://jhb.gonetis.com/images/image/get/${e.url}`}
+              src={`http://127.0.0.1:8081/image/get/${e.uri}`}
               alt=""
             />
           ))
