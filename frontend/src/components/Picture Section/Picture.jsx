@@ -29,8 +29,8 @@ const Picture = () => {
       {images
         ? images.map((e) => (
             <img
-              // src={`http://jhb.gonetis.com/images/image/get/${e.url}`}
-              src={`http://127.0.0.1:8081/image/get/${e.uri}`}
+              src={`http://jhb.gonetis.com/images/image/get/${e.url}`}
+              // src={`http://127.0.0.1:8081/image/get/${e.uri}`}
               alt=""
             />
           ))
