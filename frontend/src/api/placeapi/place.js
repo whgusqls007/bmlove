@@ -1,4 +1,4 @@
-import client from "../client";
+import { client, image } from "../client";
 
 export const savePlaceAxios = async (params) => {
   const response = client.post("/places/place", params);
@@ -16,12 +16,11 @@ export const getPlacesAxios = async (params) => {
 };
 
 export const savePlaceImageAxios = async (params) => {
-  const config = { "Content-Type": "Multipart/form-data" };
-  const response = await client.post("/places/place/image", params, config);
+  const response = await image.post("/places/place/image", params);
   return response;
 };
 
 export const getPlaceImagesAxios = async (params) => {
-  const response = client.get("/places/place/images", params);
+  const response = image.get("/places/place/images", params);
   return response;
 };

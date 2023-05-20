@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios, { AxiosHeaders } from "axios";
 
-const client = axios.create({
+export const client = axios.create({
   baseURL: "http://jhb.gonetis.com/api/",
   // baseURL: "http://127.0.0.1:8080/",
   headers: {
@@ -8,4 +8,9 @@ const client = axios.create({
   },
 });
 
-export default client;
+export const image = axios.create({
+  baseURL: "http://jhb.gonetis.com/api/",
+  headers: {
+    "Content-Type": "Multipart/form-data",
+  },
+});
