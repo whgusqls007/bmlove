@@ -16,11 +16,17 @@ export const getPlacesAxios = async (params) => {
 };
 
 export const savePlaceImageAxios = async (params) => {
-  const response = await image.post("/places/place/image", params);
+  const config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  };
+
+  const response = await client.post("/places/place/image", params, config);
   return response;
 };
 
 export const getPlaceImagesAxios = async (params) => {
-  const response = image.get("/places/place/images", params);
+  const response = client.get("/places/place/images", params);
   return response;
 };
