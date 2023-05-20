@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.annotation.MultipartConfig;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -33,6 +34,8 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/places")
 @RequiredArgsConstructor
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 1, maxFileSize = 1024 * 1024 * 256, maxRequestSize = 1024 * 1024
+        * 300, location = "D:/images")
 public class PlaceController {
 
     private final PlaceService placeService;
@@ -80,7 +83,7 @@ public class PlaceController {
     }
 
     @PostMapping("/place/image")
-    public ResponseEntity<ImageResponseDto> postPlaceImage(@RequestParam MultipartFile file) {
+    public ResponseEntity<ImageResponseDto> postPlaceImage(@RequestParam("file") MultipartFile file) {
         logger.info("file: " + file);
         logger.info("fileName: " + file.getOriginalFilename());
         ImageResponseDto imageResponseDto = null;

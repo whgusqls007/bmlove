@@ -14,18 +14,17 @@ const Picture = () => {
     dispatch(getPlaceImagesAction());
   }, [dispatch]);
 
+  const onClickHandler = () => {
+    const formData = new FormData();
+    formData.append("file", file);
+    console.log(formData);
+    dispatch(savePlaceImageAction(formData));
+  };
+
   return (
     <div className="mainContent">
       <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-      <button
-        onClick={() => {
-          const formData = new FormData();
-          formData.append("file", file);
-          dispatch(savePlaceImageAction(formData));
-        }}
-      >
-        업로드
-      </button>
+      <button onClick={onClickHandler}>업로드</button>
       {images
         ? images.map((e) => (
             <img
