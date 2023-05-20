@@ -2,8 +2,6 @@ FROM node:18.16.0 as build-stage
 
 WORKDIR /var/jenkins_home/workspace/BMLOVE/frontend
 
-RUN npm cache clean
-
 COPY package*.json ./
 RUN npm install
 
