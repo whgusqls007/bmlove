@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
-import Nav from "./components/Nav Section/Nav";
+import Nav from "./components/Nav/Nav";
 import Body from "./pages/body/Body";
 import Board from "./components/Board Section/Board";
 import Picture from "./components/Picture Section/Picture";
@@ -37,12 +37,7 @@ const App = () => {
     >
       <Nav view={view} setView={setView} windowSize={windowSize} />
       <Routes>
-        <Route
-          path=""
-          element={
-            <Body view={view} setView={setView} windowSize={windowSize} />
-          }
-        />
+        <Route path="" element={<Body windowSize={windowSize} />} />
         <Route path="/board" element={<Board />} />
         <Route path="/picture" element={<Picture />} />
       </Routes>

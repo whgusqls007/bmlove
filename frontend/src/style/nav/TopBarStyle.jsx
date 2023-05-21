@@ -85,6 +85,7 @@ export const Menu = styled.div`
         background-color: ${({ theme }) => theme.color.primaryColor};
       }
     }
+    
     @keyframes dropdown {
       0% {
         opacity: 0;

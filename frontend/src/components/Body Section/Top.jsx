@@ -1,19 +1,16 @@
 import React from "react";
 
+//==== Images, Icons ====//
 import { BiSearchAlt } from "react-icons/bi";
-import { BsArrowRightShort, BsQuestionCircle } from "react-icons/bs";
-import { TbMessageCircle } from "react-icons/tb";
-import { MdOutlineNotificationsNone } from "react-icons/md";
-
-import user from "../../assets/BM.png";
 import image from "../../assets/image1.jpg";
+
+//==== Components ====//
 import video from "../../assets/video.mp4";
 import {
   Container,
   Header,
   Title,
   SearchBar,
-  User,
   Main,
   VideoBox,
   Buttons,
@@ -23,9 +20,8 @@ import {
   Text,
   ImageBox,
 } from "../../style/body/TopStyle";
-import Dropdown from "../../components/Nav Section/TopBar";
 
-const Top = ({ view, setView, windowSize }) => {
+const Top = () => {
   return (
     <Container>
       <Header>
@@ -34,21 +30,17 @@ const Top = ({ view, setView, windowSize }) => {
           <p>안녕 수민아 ㅎㅎ</p>
         </Title>
         <SearchBar>
-          <input
-            type="text"
-            placeholder="search"
-            onBlur={() => console.log(1)}
-          />
+          <input type="text" placeholder="search" />
           <BiSearchAlt className="icon" />
         </SearchBar>
 
-        <User>
+        {/* <User>
           <TbMessageCircle className="icon" />
           <MdOutlineNotificationsNone className="icon" />
           <div className="userImage">
             <img src={user} alt="userName" />
           </div>
-        </User>
+        </User> */}
       </Header>
       <Main>
         <RightCard>

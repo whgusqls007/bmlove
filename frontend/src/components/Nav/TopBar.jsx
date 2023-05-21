@@ -43,17 +43,17 @@ const Dropdown = ({ view, setView }) => {
             </li>
 
             <li>
-              <a href="">
+              <Link to="">
                 <MdOutlineExplore className="icon" />
                 <span>메뉴아이템</span>
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a href="">
+              <Link to="">
                 <BsTrophy className="icon" />
                 <span>메뉴아이템</span>
-              </a>
+              </Link>
             </li>
           </ul>
         ) : null}

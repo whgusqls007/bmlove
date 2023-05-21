@@ -1,16 +1,18 @@
 import React from "react";
-import Listing from "../../components/Body Section/Listing Section/Listing";
-import Activity from "../../components/Body Section/Activity Section/Activity";
-import { Wrapper, Contents } from "../../style/body/BodyStyle";
-import Top from "./Top";
 
-const Body = ({ view, setView, windowSize }) => {
+//==== Components ====//
+import { Wrapper, Contents } from "../../style/body/BodyStyle";
+import Top from "../../components/Body Section/Top";
+import PhotoList from "../../components/Body Section/PhotoList Section/PhotoList";
+import RecentActivity from "../../components/Body Section/RecentActivity Section.jsx/RecentActivity";
+
+const Body = ({ windowSize }) => {
   return (
     <Wrapper>
-      <Top view={view} setView={setView} windowSize={windowSize} />
+      <Top />
       <Contents>
-        <Listing />
-        <Activity />
+        <PhotoList />
+        <RecentActivity windowSize={windowSize} />
       </Contents>
     </Wrapper>
   );

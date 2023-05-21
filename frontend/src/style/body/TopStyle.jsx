@@ -6,9 +6,17 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+  }
 `;
 
 export const Title = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-basis: 40%;
+
   h1 {
     font-size: ${({ theme }) => theme.typo.h1FontSize};
     color: ${({ theme }) => theme.color.blackColor};
@@ -19,6 +27,15 @@ export const Title = styled.div`
     font-size: ${({ theme }) => theme.typo.normalFontSize};
     color: ${({ theme }) => theme.color.textColor};
     font-weight: 500;
+
+    @media (max-width: 992px) {
+      margin-bottom: 1rem;
+    }
+  }
+
+  @media (max-width: 992px) {
+    flex-basis: 100%;
+    align-items: center;
   }
 `;
 
@@ -28,13 +45,53 @@ export const SearchBar = styled.div`
   padding: 1rem 2rem;
   background: ${({ theme }) => theme.color.whiteColor};
   border-radius: 5px;
+  border: 2px solid transparent;
   gap: 1rem;
   box-shadow: 0 2px 4px ${({ theme }) => theme.color.inputColor};
+  justify-content: space-between;
+  flex-basis: 25%;
+  width: 100%;
 
   input {
     border: none;
     outline: none;
     background: none;
+
+    &:focus {
+      width: 90%;
+    }
+
+    @media (max-width: 576px) {
+      flex-basis: 100%;
+      width: 100%;
+    }
+  }
+
+  &:focus-within {
+    animation: expand 0.5s ease;
+    flex-basis: 60%;
+    border: 2px solid ${({ theme }) => theme.color.hoverColor};
+
+    @keyframes expand {
+      0% {
+        flex-basis: 25%;
+      }
+      100% {
+        flex-basis: 60%;
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    width: 50%;
+  }
+
+  @media (max-width: 768px) {
+    width: 75%;
+  }
+
+  @media (max-width: 576px) {
+    width: 100%;
   }
 
   .icon {
@@ -45,36 +102,36 @@ export const SearchBar = styled.div`
   }
 `;
 
-export const User = styled.div`
-  gap: 1rem;
-  display: flex;
-  align-items: center;
+// export const User = styled.div`
+//   gap: 1rem;
+//   display: flex;
+//   align-items: center;
 
-  .icon {
-    font-size: ${({ theme }) => theme.typo.biggestFontSize};
-    background: ${({ theme }) => theme.color.whiteColor};
-    border-radius: 5px;
-    padding: 5px;
-    box-shadow: 0 2px 4px ${({ theme }) => theme.color.inputColor};
-    color: ${({ theme }) => theme.color.textColor};
-  }
+//   .icon {
+//     font-size: ${({ theme }) => theme.typo.biggestFontSize};
+//     background: ${({ theme }) => theme.color.whiteColor};
+//     border-radius: 5px;
+//     padding: 5px;
+//     box-shadow: 0 2px 4px ${({ theme }) => theme.color.inputColor};
+//     color: ${({ theme }) => theme.color.textColor};
+//   }
 
-  .userImage {
-    border: 3px solid ${({ theme }) => theme.color.whiteColor};
-    border-radius: 10px;
-    width: 2.5rem;
-    overflow: hidden;
-    box-shadow: 0 2px 4px ${({ theme }) => theme.color.inputColor};
+//   .userImage {
+//     border: 3px solid ${({ theme }) => theme.color.whiteColor};
+//     border-radius: 10px;
+//     width: 2.5rem;
+//     overflow: hidden;
+//     box-shadow: 0 2px 4px ${({ theme }) => theme.color.inputColor};
 
-    img {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      border-radius: 10px;
-    }
-  }
-`;
+//     img {
+//       display: flex;
+//       align-items: center;
+//       width: 100%;
+//       height: 100%;
+//       border-radius: 10px;
+//     }
+//   }
+// `;
 
 export const Main = styled.div`
   display: flex;
