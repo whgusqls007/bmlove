@@ -60,7 +60,6 @@ const Top = () => {
           <LeftCard>
             <Text>
               <h1>수민 ❤️ 현빈</h1>
-
               <div className="flex">
                 <span>
                   처음 사귄날

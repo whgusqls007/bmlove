@@ -6,14 +6,16 @@ import { BsArrowRightShort } from "react-icons/bs";
 //==== Components ====//
 import { Wrapper } from "../../style/body/HeadingStyle";
 
-const Heading = ({ title }) => {
+const Heading = ({ title, showIcon }) => {
   return (
     <Wrapper>
       <h1>{title}</h1>
-      <button>
-        See All
-        <BsArrowRightShort className="icon" />
-      </button>
+      {showIcon ? (
+        <button>
+          See All
+          <BsArrowRightShort className="icon" />
+        </button>
+      ) : null}
     </Wrapper>
   );
 };

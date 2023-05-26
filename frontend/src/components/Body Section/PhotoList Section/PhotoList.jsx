@@ -11,7 +11,7 @@ import Item from "./PhotoListItem";
 const PhotoList = () => {
   return (
     <Wrapper>
-      <Heading title={"우리 사진"} />
+      <Heading title={"우리 사진"} showIcon={true} />
       <Main>
         <Item />
         <Item />

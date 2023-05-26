@@ -113,7 +113,15 @@ body {
 }
 
 @media screen and (max-width: 576px) {
+  body {
+    padding: 0;
+  }
+
   .container {
     flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: 0;
   }
 }
