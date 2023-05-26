@@ -5,6 +5,7 @@ import Top from "../../components/Body Section/Top";
 import PhotoList from "../../components/Body Section/PhotoList Section/PhotoList";
 import RecentActivity from "../../components/Body Section/RecentActivity Section.jsx/RecentActivity";
 import Calendar from "../../components/Body Section/Calendar Section/Calendar";
+import Schedule from "../../components/Body Section/Schedule Section/Schedule";
 
 const Body = ({ windowSize }) => {
   return (
@@ -16,7 +17,7 @@ const Body = ({ windowSize }) => {
       </Contents>
       <Contents>
         <Calendar />
-        <div style={{ display: "flex", flexBasis: "50%" }}></div>
+        <Schedule />
       </Contents>
     </Wrapper>
   );

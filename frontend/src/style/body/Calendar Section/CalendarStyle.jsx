@@ -6,6 +6,10 @@ export const Wrapper = styled.div`
   flex-basis: 70%;
   flex-direction: column;
 
+  @media (max-width: 992px) {
+    flex-basis: 50%;
+  }
+
   @media (max-width: 768px) {
     flex-basis: 100%;
     width: 100%;

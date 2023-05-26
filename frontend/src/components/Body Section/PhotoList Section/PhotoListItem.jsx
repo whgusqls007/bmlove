@@ -1,16 +1,13 @@
 import React from "react";
 
-//==== Images, Icons ====//
-import image2 from "../../../assets/image2.jpg";
-
 //==== Components ====//
 import { Wrapper } from "../../../style/body/PhtoList Section/PhotoListItemStyle";
 
-const Item = () => {
+const Item = ({ uri }) => {
   return (
     <Wrapper>
-      <img src={image2} alt="name" />
-      <h3>여기다 사진 보여주기</h3>
+      <img src={`http://jhb.gonetis.com/images/image/get/${uri}`} alt={uri} />
+      <h3>제목을 넣어야하나??</h3>
     </Wrapper>
   );
 };

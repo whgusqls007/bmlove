@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getPlaceImagesAction,
   savePlaceImageAction,
-} from "../../api/placeapi/placeAction";
+} from "../../api/placeApi/placeAction";
 
 const Picture = () => {
   const dispatch = useDispatch();
@@ -11,7 +11,13 @@ const Picture = () => {
   const { images } = useSelector((state) => state.place);
 
   useEffect(() => {
-    dispatch(getPlaceImagesAction());
+    dispatch(
+      getPlaceImagesAction({
+        params: {
+          sort: "id,DESC",
+        },
+      })
+    );
   }, [dispatch]);
 
   const onClickHandler = () => {

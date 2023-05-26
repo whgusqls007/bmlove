@@ -24,4 +24,9 @@ export const Wrapper = styled.div`
       transition: 0.5s ease;
     }
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: space-between;
+  }
 `;
