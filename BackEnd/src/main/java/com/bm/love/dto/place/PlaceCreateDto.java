@@ -1,4 +1,4 @@
-package com.bm.love.dto;
+package com.bm.love.dto.place;
 
 import javax.validation.constraints.NotBlank;
 

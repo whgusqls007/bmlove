@@ -1,4 +1,4 @@
-package com.bm.love.dto;
+package com.bm.love.dto.place;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -19,5 +19,4 @@ public class PlaceResponseDto {
         this.title = title;
         this.content = content;
     }
-
 }

@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.bm.love.dto.ErrorResponseDto;
+import com.bm.love.dto.error.ErrorResponseDto;
 import com.bm.love.exception.CustomNotFoundException;
 
 @RestControllerAdvice("com.bm.love.controller")

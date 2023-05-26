@@ -1,4 +1,4 @@
-package com.bm.love.dto;
+package com.bm.love.dto.error;
 
 import org.springframework.http.HttpStatus;
 

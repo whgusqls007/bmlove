@@ -1,4 +1,4 @@
-package com.bm.love.dto;
+package com.bm.love.dto.image;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.bm.love.service;
+package com.bm.love.service.place;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,9 +19,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.bm.love.dto.ImageResponseDto;
-import com.bm.love.dto.PlaceCreateDto;
-import com.bm.love.dto.PlaceResponseDto;
+import com.bm.love.dto.image.ImageResponseDto;
+import com.bm.love.dto.place.PlaceCreateDto;
+import com.bm.love.dto.place.PlaceResponseDto;
 import com.bm.love.entity.ImageEntity;
 import com.bm.love.entity.PlaceEntity;
 import com.bm.love.exception.CustomNotFoundException;

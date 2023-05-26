@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.annotation.MultipartConfig;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -20,12 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.bm.love.dto.ImageResponseDto;
-import com.bm.love.dto.PlaceCreateDto;
-import com.bm.love.dto.PlaceResponseDto;
-import com.bm.love.dto.PlaceSearchDto;
+import com.bm.love.dto.image.ImageResponseDto;
+import com.bm.love.dto.place.PlaceCreateDto;
+import com.bm.love.dto.place.PlaceResponseDto;
+import com.bm.love.dto.place.PlaceSearchDto;
 import com.bm.love.exception.CustomNotFoundException;
-import com.bm.love.service.PlaceService;
+import com.bm.love.service.place.PlaceService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -63,7 +62,6 @@ public class PlaceController {
 
     @GetMapping("/places")
     public ResponseEntity<List<PlaceResponseDto>> getPlaces(Pageable pageable) throws CustomNotFoundException {
-
         List<PlaceResponseDto> list = null;
         list = placeService.getPlaces(pageable);
         return new ResponseEntity<>(list, HttpStatus.OK);

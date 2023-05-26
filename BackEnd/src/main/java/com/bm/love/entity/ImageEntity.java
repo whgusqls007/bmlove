@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.bm.love.dto.ImageResponseDto;
+import com.bm.love.dto.image.ImageResponseDto;
 
 import lombok.AccessLevel;
 import lombok.Builder;
