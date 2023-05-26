@@ -1,16 +1,22 @@
 import React from "react";
-import Top from "../../components/Body Section/Top Section/Top";
-import Listing from "../../components/Body Section/Listing Section/Listing";
-import Activity from "../../components/Body Section/Activity Section/Activity";
-import { Wrapper, Contents } from "../../style/body/body";
+//==== Components ====//
+import { Wrapper, Contents } from "../../style/body/BodyStyle";
+import Top from "../../components/Body Section/Top";
+import PhotoList from "../../components/Body Section/PhotoList Section/PhotoList";
+import RecentActivity from "../../components/Body Section/RecentActivity Section.jsx/RecentActivity";
+import Calendar from "../../components/Body Section/Calendar Section/Calendar";
 
-const Body = () => {
+const Body = ({ windowSize }) => {
   return (
     <Wrapper>
       <Top />
       <Contents>
-        <Listing />
-        <Activity />
+        <PhotoList />
+        <RecentActivity windowSize={windowSize} />
+      </Contents>
+      <Contents>
+        <Calendar />
+        <div style={{ display: "flex", flexBasis: "50%" }}></div>
       </Contents>
     </Wrapper>
   );

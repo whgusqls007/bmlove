@@ -9,6 +9,8 @@ const theme = {
     bgColor: "hsl(220, 10%, 94%)",
     greyText: "rgb(190, 190, 190)",
     inputColor: "hsl(330, 12%, 97%)",
+    itemCardColor: "hsl(120, 5%, 88%)",
+    itemCardHover: "hsl(103, 80%, 90%)",
   },
 
   typo: {

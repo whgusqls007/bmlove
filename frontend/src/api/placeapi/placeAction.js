@@ -80,7 +80,6 @@ export const getPlacesAction = createAsyncThunk(
 export const savePlaceImageAction = createAsyncThunk(
   "places/place/image/post",
   async (params, { rejectWithValue }) => {
-    console.log(params);
     try {
       const { data } = await savePlaceImageAxios(params);
       return data;

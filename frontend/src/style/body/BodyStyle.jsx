@@ -19,4 +19,8 @@ export const Contents = styled.div`
   margin-top: 2rem;
   gap: 2rem;
   align-items: flex-start;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
