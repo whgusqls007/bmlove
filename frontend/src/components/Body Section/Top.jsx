@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { differenceInDays } from "date-fns";
 
 //==== Images, Icons ====//
 import { BiSearchAlt } from "react-icons/bi";
@@ -22,6 +23,12 @@ import {
 } from "../../style/body/TopStyle";
 
 const Top = () => {
+  const [dday, setDday] = useState(0);
+
+  useEffect(() => {
+    setDday(differenceInDays(new Date(), new Date("2022-08-24")));
+  }, []);
+
   return (
     <Container>
       <Header>
@@ -69,7 +76,7 @@ const Top = () => {
                 <span>
                   지금까지 몇일
                   <br />
-                  <small>266일</small>
+                  <small>{dday}</small>
                 </span>
               </div>
             </Text>
