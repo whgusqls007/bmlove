@@ -20,7 +20,7 @@ const Calendar = () => {
   };
 
   useEffect(() => {
-    console.log(selectedDate);
+    alert(selectedDate);
   }, [selectedDate]);
 
   return (

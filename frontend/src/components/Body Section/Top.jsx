@@ -26,7 +26,7 @@ const Top = () => {
   const [dday, setDday] = useState(0);
 
   useEffect(() => {
-    setDday(differenceInDays(new Date(), new Date("2022-08-24")));
+    setDday(differenceInDays(new Date(), new Date("2022-08-24")) + 2);
   }, []);
 
   return (
