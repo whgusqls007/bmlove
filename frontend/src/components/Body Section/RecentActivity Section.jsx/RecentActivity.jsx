@@ -11,7 +11,7 @@ import Item from "./RecentActivityItem";
 const RecentActivity = ({ windowSize }) => {
   return (
     <Wrapper>
-      <Heading title={"최근 활동"} showIcon={true} />
+      <Heading title={"최근 활동"} showIcon={false} />
       <Main>
         <Item windowSize={windowSize} />
         <Item windowSize={windowSize} />

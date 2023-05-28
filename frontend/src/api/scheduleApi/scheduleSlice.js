@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getScheduleAction } from "./scheduleAction";
+import { getScheduleAction, getScheduleOfMonthAction } from "./scheduleAction";
 
 const initialState = {
   schedules: [],
+  monthSchedules: [],
 };
 
 const scheduleSlice = createSlice({
@@ -15,6 +16,15 @@ const scheduleSlice = createSlice({
     });
     builder.addCase(getScheduleAction.rejected, (state, { payload }) => {
       state.schedules = payload;
+    });
+    builder.addCase(
+      getScheduleOfMonthAction.fulfilled,
+      (state, { payload }) => {
+        state.monthSchedules = payload;
+      }
+    );
+    builder.addCase(getScheduleOfMonthAction.rejected, (state, { payload }) => {
+      state.monthSchedules = payload;
     });
   },
 });

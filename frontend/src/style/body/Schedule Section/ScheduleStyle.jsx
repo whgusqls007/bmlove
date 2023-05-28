@@ -18,6 +18,8 @@ export const Main = styled.div`
   align-items: center;
   flex-direction: column;
   margin-top: 1rem;
+  overflow: scroll;
+  max-height: 40rem;
 
   @media (max-width: 768px) {
     margin-left: 10%;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { differenceInDays } from "date-fns";
+
 //==== Components ====//
 import {
   Wrapper,
@@ -11,7 +12,7 @@ const ScheduleItem = ({ date, title }) => {
 
   useEffect(() => {
     setDday(differenceInDays(new Date(date), new Date()));
-  }, []);
+  }, [date, title]);
 
   return (
     <Wrapper>

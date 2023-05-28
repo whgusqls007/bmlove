@@ -22,7 +22,6 @@ const CalendarHeader = ({ curMonth, prevMonth, nextMonth }) => {
     <Wrapper>
       <HeaderMonth>
         <Month>
-          <h1>{format(curMonth, "dd")} 일</h1>
           <h1>{format(curMonth, "M")} 월</h1>
           <span>{format(curMonth, "yyyy")} 년</span>
         </Month>

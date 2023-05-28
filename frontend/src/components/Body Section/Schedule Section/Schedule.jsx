@@ -22,10 +22,9 @@ const Schedule = () => {
     <Wrapper>
       <Heading title={"일정"} showIcon={false} />
       <Main>
-        {schedules &&
-          schedules.map((e, i) => (
-            <Item key={i} date={e.date} title={e.title} />
-          ))}
+        {schedules.map((e, i) => (
+          <Item key={i} date={e.date} title={e.title} />
+        ))}
       </Main>
     </Wrapper>
   );

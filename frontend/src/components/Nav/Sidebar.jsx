@@ -1,12 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+//==== Images, Icons ====//
 import logo from "../../assets/BM.png";
-
-import { IoMdSpeedometer } from "react-icons/io";
-import { MdDeliveryDining, MdOutlineExplore } from "react-icons/md";
 import { BsTrophy } from "react-icons/bs";
+import {
+  AiOutlineCalendar,
+  AiOutlinePicture,
+  AiOutlineRead,
+} from "react-icons/ai";
 
+//==== Components ====//
 import { Wrapper, Menu } from "../../style/nav/SideBarStyle";
 
 const Sidebar = () => {
@@ -22,22 +26,22 @@ const Sidebar = () => {
         <ul>
           <li>
             <Link to="/board">
-              <IoMdSpeedometer className="icon" />
+              <AiOutlineRead className="icon" />
               <span>게시판</span>
             </Link>
           </li>
 
           <li>
             <Link to="/picture">
-              <MdDeliveryDining className="icon" />
+              <AiOutlinePicture className="icon" />
               <span>사진</span>
             </Link>
           </li>
 
           <li>
             <Link to="">
-              <MdOutlineExplore className="icon" />
-              <span>메뉴아이템</span>
+              <AiOutlineCalendar className="icon" />
+              <span>일정</span>
             </Link>
           </li>
 
@@ -49,7 +53,6 @@ const Sidebar = () => {
           </li>
         </ul>
       </Menu>
-      <Menu></Menu>
     </Wrapper>
   );
 };
