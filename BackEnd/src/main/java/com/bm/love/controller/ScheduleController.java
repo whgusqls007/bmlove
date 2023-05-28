@@ -1,7 +1,11 @@
 package com.bm.love.controller;
 
+import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +30,8 @@ public class ScheduleController {
 
   private final ScheduleService scheduleService;
 
+  final static Logger logger = LoggerFactory.getLogger(ScheduleController.class);
+
   @Operation(description = "Post Schedule")
   @ApiResponse(responseCode = "200", description = "OK")
   @PostMapping("/schedule")
@@ -45,8 +51,27 @@ public class ScheduleController {
   @ApiResponse(responseCode = "200", description = "OK")
   @GetMapping("/schedules")
   public ResponseEntity<List<ScheduleResponseDto>> getSchedules(Pageable pageable) throws CustomNotFoundException {
+    logger.info("pageable: " + pageable.toString());
     List<ScheduleResponseDto> list = null;
     list = scheduleService.getSchedules(pageable);
     return new ResponseEntity<>(list, HttpStatus.OK);
+  }
+
+  @Operation(description = "Get Month Schedule List")
+  @ApiResponse(responseCode = "200", description = "OK")
+  @GetMapping("/schedules/month")
+  public ResponseEntity<Map<String, String>> getSchedules(Date startDate, Date endDate) {
+    logger.info("startDate: " + startDate);
+    logger.info("endDate: " + endDate);
+
+    Map<String, String> map = null;
+
+    try {
+      map = scheduleService.getMonthSchedule(startDate, endDate);
+    } catch (CustomNotFoundException e) {
+      return new ResponseEntity<>(map, HttpStatus.NO_CONTENT);
+    }
+
+    return new ResponseEntity<>(map, HttpStatus.OK);
   }
 }

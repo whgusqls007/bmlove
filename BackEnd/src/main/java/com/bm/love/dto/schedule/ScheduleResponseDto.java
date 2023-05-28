@@ -1,6 +1,7 @@
 package com.bm.love.dto.schedule;
 
 import java.sql.Date;
+import java.util.Map;
 
 import lombok.Builder;
 import lombok.Getter;

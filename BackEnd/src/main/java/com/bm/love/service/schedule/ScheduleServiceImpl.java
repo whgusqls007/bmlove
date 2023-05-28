@@ -1,8 +1,11 @@
 package com.bm.love.service.schedule;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -49,8 +52,23 @@ public class ScheduleServiceImpl implements ScheduleService {
   }
 
   @Override
+  public Map<String, String> getMonthSchedule(Date startDate, Date endDate) throws CustomNotFoundException {
+
+    List<ScheduleEntity> res = scheduleRepository.findMonthSchedule(startDate, endDate);
+    HashMap<String, String> map = new HashMap<>();
+    res.forEach((e) -> map.put(new SimpleDateFormat("yyyy-MM-dd").format(e.getDate()), e.getTitle()));
+
+    if (map.size() == 0) {
+      throw CustomNotFoundException.builder().message("No content found").build();
+    }
+
+    return map;
+  }
+
+  @Override
   public void deletePrevSchedule() {
     scheduleRepository.deleteAllByDate(new Date(new java.util.Date().getTime()));
     return;
   }
+
 }
